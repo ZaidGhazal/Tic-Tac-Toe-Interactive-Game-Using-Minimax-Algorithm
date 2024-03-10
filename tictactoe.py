@@ -53,7 +53,13 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
-    raise NotImplementedError
+    if board[action[0]][action[1]] != EMPTY:
+        raise Exception("Invalid Move")
+    
+    current_player = player(board)
+    new_board = [row[:] for row in board]
+    new_board[action[0]][action[1]] = current_player
+    return new_board
 
 
 def winner(board):
