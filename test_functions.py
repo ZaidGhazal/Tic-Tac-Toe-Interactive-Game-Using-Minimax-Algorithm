@@ -1,6 +1,6 @@
 import unittest
 
-from tictactoe import actions, player, result, terminal, winner
+from tictactoe import actions, player, result, terminal, utility, winner
 
 X = "X"
 O = "O"
@@ -131,4 +131,32 @@ class testTicTacToe(unittest.TestCase):
                 self.assertEqual(winner(board_3), X)
                 self.assertEqual(winner(board_4), None)
                 self.assertEqual(winner(board_5), O)
+
+        def test_utility(self):
+                """This function tests the utility function in tictactoe.py """
+                board_1 = [[EMPTY, X, O],
+                        [EMPTY, X, O],
+                        [EMPTY, EMPTY, EMPTY]]
+                
+                board_2 = [[EMPTY, X, O],
+                           [EMPTY, X, O],
+                           [EMPTY, X, EMPTY]]
+                
+                board_3 = [     [O, O, X],
+                                [O, X, EMPTY],
+                                [X, EMPTY, X]]
+                
+                board_4 = [[EMPTY, EMPTY, EMPTY],
+                        [EMPTY, EMPTY, EMPTY],
+                        [EMPTY, EMPTY, EMPTY]]
+                
+                board_5 = [     [O, O, O],
+                                [X, X, O],
+                                [X, X, EMPTY]]
+                
+                self.assertEqual(utility(board_1), 0)
+                self.assertEqual(utility(board_2), 1)
+                self.assertEqual(utility(board_3), 1)
+                self.assertEqual(utility(board_4), 0)
+                self.assertEqual(utility(board_5), -1)
 
